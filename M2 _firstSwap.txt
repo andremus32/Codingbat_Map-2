@@ -1,0 +1,27 @@
+//Map-2 > firstSwap
+public String[] firstSwap(String[] strings) {
+  
+  if(strings.length > 0){
+  Map<String, Integer> map = new HashMap<>();
+  Map<String, Boolean> mapForCheck = new HashMap<>();
+  map.put(String.valueOf(strings[0].charAt(0)), 0);
+  mapForCheck.put(String.valueOf(strings[0].charAt(0)), true);
+  
+  for(int i = 1; i < strings.length; i++){
+    if(map.containsKey(String.valueOf(strings[i].charAt(0))) && mapForCheck.get(String.valueOf(strings[i].charAt(0)))){
+      String tmp = strings[i];
+      strings[i] = strings[map.get(String.valueOf(strings[i].charAt(0)))];
+      strings[map.get(String.valueOf(strings[i].charAt(0)))] = tmp;
+      map.remove(String.valueOf(strings[i].charAt(0)));
+      mapForCheck.put(String.valueOf(strings[i].charAt(0)), false);
+    }
+    else {
+      map.put(String.valueOf(strings[i].charAt(0)), i);
+      if(!mapForCheck.containsKey(String.valueOf(strings[i].charAt(0)))){
+        mapForCheck.put(String.valueOf(strings[i].charAt(0)), true);
+      }
+    }
+  }
+  }
+  return strings;
+}

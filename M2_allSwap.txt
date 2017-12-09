@@ -1,0 +1,21 @@
+//Map-2 > allSwap
+public String[] allSwap(String[] strings) {
+  
+  if(strings.length > 0){
+  Map<String, Integer> map = new HashMap<>();
+  map.put(String.valueOf(strings[0].charAt(0)), 0);
+  
+  for(int i = 1; i < strings.length; i++){
+    if(map.containsKey(String.valueOf(strings[i].charAt(0)))){
+      String tmp = strings[i];
+      strings[i] = strings[map.get(String.valueOf(strings[i].charAt(0)))];
+      strings[map.get(String.valueOf(strings[i].charAt(0)))] = tmp;
+      map.remove(String.valueOf(strings[i].charAt(0)));
+    }
+    else {
+      map.put(String.valueOf(strings[i].charAt(0)), i);
+    }
+  }
+  }
+  return strings;
+}

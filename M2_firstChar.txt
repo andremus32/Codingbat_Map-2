@@ -1,0 +1,18 @@
+//Map-2 > firstChar
+public Map<String, String> firstChar(String[] strings) {
+  int count = 0;
+  String result = "";
+  Map<String, String> map = new HashMap<>();
+  for(int i = 0; i < strings.length; i++){
+    for(int j = 0; j < strings.length; j++){
+      if(strings[i].charAt(0) == strings[j].charAt(0)){
+        count++;
+        result += strings[j];
+      }
+    }
+    map.put(String.valueOf(strings[i].charAt(0)), result);
+    count = 0;
+    result = "";
+  }
+  return map;
+}
